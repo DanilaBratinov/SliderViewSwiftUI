@@ -10,7 +10,7 @@ struct ContentView: View {
             Color("backgroundColor")
                 .ignoresSafeArea()
             VStack {
-                ColorScreenView(red: $red, green: $green, blue: $blue)
+                ColorScreenView(red: red, green: green, blue: blue)
                 
                 SliderView(value: $red, color: .red)
                 SliderView(value: $green, color: .green)
@@ -40,7 +40,7 @@ struct SliderView: View {
             Text("\(lround(value))")
                 .foregroundColor(color)
             Spacer()
-            Slider(value: $value, in: 0...255)
+            Slider(value: $value, in: 0...255, step: 1)
                 .frame(width: 320)
                 .accentColor(color)
         }
@@ -51,9 +51,9 @@ struct SliderView: View {
 //MARK: - ColorScreenView
 
 struct ColorScreenView: View {
-    @Binding var red: Double
-    @Binding var green: Double
-    @Binding var blue: Double
+    let red: Double
+    let green: Double
+    let blue: Double
     
     var body: some View {
         Color(
